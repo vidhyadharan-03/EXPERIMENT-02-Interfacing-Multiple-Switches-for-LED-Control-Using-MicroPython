@@ -2,13 +2,13 @@
 
 
  
-## NAME:
+## NAME: VIDHYADHARAN R
 
-## DEPARTMENT:
+## DEPARTMENT: CSE(IoT)
 
-## ROLL NO:
+## ROLL NO: 212222110053
 
-## DATE OF EXPERIMENT:
+## DATE OF EXPERIMENT: 03/03/2025
 
 ## AIM
 
@@ -64,27 +64,63 @@ Connect LED 2 to GP17 via a 330Ω resistor.
 Connect the other terminals of the switches to GND.
 
 ## PROGRAM (MicroPython)
-''''
+```
+from machine import Pin
+from time import sleep
 
+switch1 = Pin(2,Pin.IN)
+switch2 = Pin(3,Pin.IN)
 
+led1 = Pin(15,Pin.OUT)
+led2 = Pin(16,Pin.OUT)
+while True:
+    sw1_state = switch1.value()
+    sw2_state = switch2.value()
 
- 
+    print("Switch 1 State:",sw1_state)
+    print("Switch 2 State:",sw2_state)
+    led1.value(0)
 
+    if sw1_state==1 and sw2_state==1:
+        led1.value(0)
+        led2.value(0)
+
+    elif sw1_state==1:
+        led1.value(1)
+        sleep(0.5)
+        led1.value(0)
+        led2.value(0)
+
+    elif sw2_state==1:
+        led1.value(0)
+        led2.value(1)
+        sleep(0.5)
+        led2.value(0)
+
+    sleep(0.5)
+        
+```
 ## OUTPUT
 
+## CIRCUIT CONNECTION:
 
+![image](https://github.com/user-attachments/assets/48ff68c9-4942-4f58-97f5-cc43af8b8b03)
 
-FIGURE-02: CIRCUIT CONNECTION
+## SWITCH 1 ON:
 
-FIGURE-03: CODE EXECUTION OUTPUT
+![Screenshot 2025-03-03 105154](https://github.com/user-attachments/assets/6703bd7c-4458-46a7-852b-d4a239e20e55)
 
-FIGURE-04: LED STATUS BASED ON SWITCH INPUTS
+## SWITCH 2 ON:
+
+![Screenshot 2025-03-03 105225](https://github.com/user-attachments/assets/02ae0605-bea5-42bf-a391-f2865a299ab9)
+
+## BOTH SWITCH ON:
+
+![Screenshot 2025-03-03 105242](https://github.com/user-attachments/assets/38d72ff6-31bd-47ee-a032-ccc88d884aff)
+
 ## TIMING DIGAGRAM 
 
-
-UPLOAD YOUR TIMING DIGARAM HERE 
-
-
+![image](https://github.com/user-attachments/assets/004dca93-4ec2-4ec9-9d20-16fb4d4a91e9)
 
 ## RESULTS
 
